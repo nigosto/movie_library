@@ -1,11 +1,9 @@
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
 import { useRef } from "react";
 
 export default function LoginForm() {
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
-  const router = useRouter();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -13,17 +11,11 @@ export default function LoginForm() {
     const enteredUsername = usernameInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    const res = await signIn("credentials", {
-      redirect: false,
+    await signIn("credentials", {
+      redirect: "/",
       username: enteredUsername,
       password: enteredPassword,
     });
-
-    if(res?.error) {
-      alert(res?.error);
-    }
-
-    return router.push("/");
   };
 
   return (

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import User from "../models/User";
 import {generateSalt, generateHashedPassword} from "../utils/encryption"
 
-const seedUser = async () => {
+async function seedUser() {
   try {
     let users = await User.find();
     if (users.length > 0) return;
@@ -33,9 +33,8 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-const connectDB = () => {
+export default function connectDB() {
   if (mongoose.connections[0].readyState) {
-    console.log("Already connected.");
     return;
   }
   mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
@@ -55,4 +54,3 @@ const connectDB = () => {
     console.log(reason);
   });
 };
-export default connectDB;
