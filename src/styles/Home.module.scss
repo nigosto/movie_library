@@ -8,10 +8,28 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   height: 15rem;
   h1 {
     margin: 0;
+  }
+}
+
+.movieSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer {
+  display: block;
+  position: relative;
+  width: 20rem;
+
+  .image {
+    position: relative !important;
+    object-fit: contain;
   }
 }

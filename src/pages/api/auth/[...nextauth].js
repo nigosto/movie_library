@@ -1,4 +1,4 @@
-import connectDB from "@/lib/dbConnect";
+import connectDB from "../../../lib/dbConnect"
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import User from "../../../models/User";
