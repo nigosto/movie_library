@@ -9,6 +9,7 @@ export async function getServerSideProps(context) {
       cookie: context.req.headers.cookie || "",
     }});
 
+  console.log(res.status)
   if(!res.ok) {
     return {
       props:{}

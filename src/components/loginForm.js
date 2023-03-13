@@ -11,11 +11,15 @@ export default function LoginForm() {
     const enteredUsername = usernameInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    await signIn("credentials", {
+    const res = await signIn("credentials", {
       redirect: "/",
       username: enteredUsername,
       password: enteredPassword,
     });
+
+    if(!res?.error) {
+      window.location.href = "/"
+    }
   };
 
   return (
