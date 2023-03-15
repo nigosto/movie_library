@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 import { useSession, signOut, signIn } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
   const res = await fetch("http://localhost:3000/api/movie/all", {
@@ -9,7 +10,6 @@ export async function getServerSideProps(context) {
       cookie: context.req.headers.cookie || "",
     }});
 
-  console.log(res.status)
   if(!res.ok) {
     return {
       props:{}
@@ -26,6 +26,10 @@ export async function getServerSideProps(context) {
 
 export default function Home({ movies }) {
   const { data: session, status } = useSession();
+  const router = useRouter();
+  const loaderProp =({ src }) => {
+    return src;
+  }
 
   return (
     <div className={styles.container}>
@@ -48,7 +52,7 @@ export default function Home({ movies }) {
               <span>{movie.genre}</span>
               <span>{movie.producer}</span>
               <div className={styles.imageContainer}>
-                <Image className={styles.image} src={movie.image} fill alt={movie.name} />
+                <Image className={styles.image} src={movie.image} fill alt={movie.name} loader={loaderProp} onClick={() => router.push(`/movie/${movie._id}`)} />
               </div>
             </section>
           );
@@ -57,3 +61,4 @@ export default function Home({ movies }) {
     </div>
   );
 }
+

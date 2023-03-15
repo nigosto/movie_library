@@ -1,0 +1,40 @@
+.createMovieForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: auto;
+    margin-top: 3rem;
+
+    :not(:first-child, :nth-child(4), :nth-child(5)) {
+        margin-left: 3rem;
+    }
+
+    .smallInput {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 27.5%;
+        margin-bottom: 2rem;
+
+        input {
+            margin: 0;
+        }
+    }
+
+    .largeInput {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 2rem;
+
+        textarea, input {
+            margin: 0;
+            width: 100%;
+        }
+    }
+}

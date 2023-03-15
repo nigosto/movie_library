@@ -1,6 +1,5 @@
 import Movie from "../../../models/Movie"
 import connectDB from "@/lib/dbConnect";
-import { getSession } from "next-auth/react";
 
 export default async function handler(req, res) {
     if(req.method === 'POST') {   

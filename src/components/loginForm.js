@@ -1,9 +1,11 @@
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 
 export default function LoginForm() {
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
+  const router = useRouter();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,7 +20,7 @@ export default function LoginForm() {
     });
 
     if(!res?.error) {
-      window.location.href = "/"
+        router.push("/")
     }
   };
 

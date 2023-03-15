@@ -7,7 +7,8 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'm.media-amazon.com',
       }
-    ]
+    ],
+    domains: ['m.media-amazon.com', '127.0.0.1']
   }
 }
 
